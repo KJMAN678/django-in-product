@@ -1,25 +1,41 @@
-
 ```sh
-$ uv add Django==5.2.8
-$ uv add --dev Django==5.2.8
-$ uv sync
+# 最初の1回
+$ touch .envrc
+# for Mac
+$ brew install direnv
 
-$ mkdir backend
-$ uv run django-admin startproject config backend/api/
+# 環境変数
+$ cp .envrc.example .envrc
+$ direnv allow
 
-$ mkdir backend/api
-$ uv run django-admin startapp api backend/api
-
-$ uv run python backend/manage.py makemigrations
-$ uv run python backend/manage.py migrate
-
-$ uv run python backend/manage.py runserver
+$ docker compose up -d
+$ docker compose down
+$ docker compose build
 ```
-http://127.0.0.1:8000/
+http://localhost:8000/v1/api/hello-world/
+
+
+### 保留 backend
+```sh
+$ docker compose exec web uv add Django==5.2.8
+$ docker compose exec web uv add --dev Django==5.2.8
+
+# 最初の1回のみ プロジェクト作成
+$ mkdir backend
+$ docker compose exec web uv run django-admin startproject config backend/api/
+
+# app 追加
+$ mkdir backend/api
+$ docker compose exec web uv run django-admin startapp api backend/api
+
+$ docker compose exec web uv run python manage.py makemigrations
+$ docker compose exec web uv run python manage.py migrate
+$ docker compose exec web uv run manage.py createsuperuser --noinput
+```
 
 ```sh
-$ uv run ruff check . --fix
-$ uv run ruff format .
-$ uv run mypy .
-$ uv run pytest
+$ docker compose exec web uv run ruff check . --fix
+$ docker compose exec web uv run ruff format .
+$ docker compose exec web uv run mypy .
+$ docker compose exec web uv run pytest
 ```
