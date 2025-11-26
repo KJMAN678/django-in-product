@@ -25,8 +25,8 @@ $ mkdir backend
 $ docker compose exec web uv run django-admin startproject config backend/api/
 
 # app 追加
-$ mkdir backend/api
-$ docker compose exec web uv run django-admin startapp api backend/api
+$ mkdir backend/blog
+$ docker compose exec web uv run django-admin startapp blog blog
 
 $ docker compose exec web uv run python manage.py makemigrations
 $ docker compose exec web uv run python manage.py migrate
