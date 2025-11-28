@@ -13,6 +13,7 @@ $ docker compose down
 $ docker compose build
 ```
 http://localhost:8000/v1/api/hello-world/
+http://localhost:8000/admin/
 
 
 ### 保留 backend
@@ -25,8 +26,8 @@ $ mkdir backend
 $ docker compose exec web uv run django-admin startproject config backend/api/
 
 # app 追加
-$ mkdir backend/blog
-$ docker compose exec web uv run django-admin startapp blog blog
+$ mkdir backend/util
+$ docker compose exec web uv run django-admin startapp util util
 
 $ docker compose exec web uv run python manage.py makemigrations
 $ docker compose exec web uv run python manage.py migrate
@@ -38,4 +39,14 @@ $ docker compose exec web uv run ruff check . --fix
 $ docker compose exec web uv run ruff format .
 $ docker compose exec web uv run mypy .
 $ docker compose exec web uv run pytest
+```
+
+### ダミーデータ作成
+```sh
+$ docker compose exec web uv run python manage.py make_dummy_blog_author
+```
+
+```sh
+$ docker compose exec web uv run python manage.py get_query_blog
+$ docker compose exec web uv run python manage.py get_query_author
 ```

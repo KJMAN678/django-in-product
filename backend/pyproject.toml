@@ -8,6 +8,7 @@ dependencies = [
     "django==5.2.8",
     "djangorestframework==3.16.1",
     "psycopg2==2.9.11",
+    "Faker==38.2.0",
 ]
 
 [dependency-groups]
@@ -38,3 +39,6 @@ plugins = ["mypy_django_plugin.main"]
 
 [tool.django-stubs]
 django_settings_module = "config.settings"
+
+[tool.uv]
+link-mode = "copy"
