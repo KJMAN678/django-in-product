@@ -12,6 +12,7 @@ class TestHelloWorldView:
         url = "http://127.0.0.1:8000/v1/api/hello-world/"
         request = factory.get(url)
 
+        # pyrefly: ignore [not-callable]
         response = view(request, version="v1")
         assert response.status_code == 200
 
@@ -23,6 +24,7 @@ class TestHelloWorldView:
         url = f"http://127.0.0.1:8000/{version}/api/hello-world/"
         request = factory.get(url)
 
+        # pyrefly: ignore [not-callable]
         response = view(request, version=version)
         assert response.data == {"message": f"Hello, World! {version}"}
 
@@ -34,5 +36,6 @@ class TestHelloWorldView:
         url = f"http://127.0.0.1:8000/{version}/api/hello-world/"
         request = factory.get(url)
 
+        # pyrefly: ignore [not-callable]
         response = view(request, version=version)
         assert response.data == {"detail": "URLパス内のバージョンが不正です。"}
