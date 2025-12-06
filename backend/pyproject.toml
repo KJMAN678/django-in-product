@@ -8,7 +8,9 @@ dependencies = [
     "django==5.2.9",
     "djangorestframework==3.16.1",
     "psycopg2==2.9.11",
-    "Faker==38.2.0",
+    "pillow==12.0.0",
+    "django-fsm-2==4.1.0",
+    "django-fsm-2-admin==2.0.1",
 ]
 
 [dependency-groups]
@@ -20,6 +22,7 @@ dev = [
     "ruff==0.14.6",
     "taskipy==1.14.1",
     "pyrefly==0.44.1",
+    "Faker==38.2.0",
 ]
 
 [tool.pytest.ini_options]
@@ -64,7 +67,9 @@ python manage.py makemigrations && \
 python manage.py flush --no-input && \
 python manage.py migrate && \
 python manage.py createsuperuser --noinput && \
-python manage.py make_dummy_blog_author
+python manage.py make_dummy_blog_author && \
+python manage.py make_dummy_invoice && \
+python manage.py make_dummy_uuid_model
 """
 
 [tool.pyrefly]

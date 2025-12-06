@@ -30,6 +30,8 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     "rest_framework",
+    "django_fsm",
+    "fsm_admin",
 ]
 
 CUSTOM_APPS = [
@@ -37,6 +39,13 @@ CUSTOM_APPS = [
     "author",
     "blog",
     "util",
+    "a_model",
+    "b_model",
+    "model_manager",
+    "uuid_model",
+    "transaction_model",
+    "generic_foreign_key_model",
+    "fsm_model",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + CUSTOM_APPS
