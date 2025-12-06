@@ -99,3 +99,8 @@ $ docker compose exec web uv run pyrefly init
 $ docker compose exec web uv run pyrefly check --suppress-errors
 $ docker compose exec web uv run pyrefly check --remove-unused-ignores
 ```
+
+### FSM による状態管理
+- [django-fsm-2](https://github.com/django-commons/django-fsm-2)
+- [django-fsm-2-admin](https://github.com/coral-li/django-fsm-2-admin)
+- [django-fsm を使って Django の状態遷移を管理する](https://joseph-fox.co.uk/tech/manage-state-transitions-django-fsm-guide)
