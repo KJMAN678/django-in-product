@@ -10,6 +10,9 @@ class MonitorPostAdmin(FSMTransitionMixin, admin.ModelAdmin):
     fsm_field = [
         "state",
     ]
+    readonly_fields = [
+        "state",
+    ]
 
 
 admin.site.register(MonitorPost, MonitorPostAdmin)
