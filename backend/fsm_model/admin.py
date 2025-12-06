@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django_fsm import transition
 from fsm_admin.mixins import FSMTransitionMixin
 
 from fsm_model.models import MonitorPost
