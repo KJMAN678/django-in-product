@@ -48,6 +48,7 @@ CUSTOM_APPS = [
     "fsm_model",
     "organized_model",
     "data_optimization",
+    "bulk_create_trouble",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + CUSTOM_APPS

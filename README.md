@@ -30,8 +30,8 @@ $ mkdir backend
 $ docker compose exec web uv run django-admin startproject config backend/api/
 
 # app 追加
-$ mkdir backend/data_optimization
-$ docker compose exec web uv run django-admin startapp data_optimization data_optimization
+$ mkdir backend/bulk_create_trouble
+$ docker compose exec web uv run django-admin startapp bulk_create_trouble bulk_create_trouble
 
 $ docker compose exec web uv run task start-django
 - 以下を実行
@@ -97,6 +97,13 @@ $ docker compose exec web uv run python manage.py get_bad_query
 
 # N+1 問題
 $ docker compose exec web uv run python manage.py get_n_plus_1
+
+# bulk create はシグナル pre_save が実行されない
+$ docker compose exec web uv run python manage.py do_bulk_create_no_signal
+# bulk create は Baseモデルを継承したモデルでは動作しない
+$ docker compose exec web uv run python manage.py do_bulk_create_no_multi_table_inheritance
+
+$ docker compose exec web uv run python manage.py do_bulk_create_many_to_many_model
 ```
 
 ### pyrefly を試す
