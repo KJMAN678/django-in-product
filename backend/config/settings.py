@@ -46,6 +46,8 @@ CUSTOM_APPS = [
     "transaction_model",
     "generic_foreign_key_model",
     "fsm_model",
+    "organized_model",
+    "data_optimization",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + CUSTOM_APPS

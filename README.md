@@ -15,6 +15,7 @@ $ docker compose down
 $ docker compose build
 $ docker compose exec web uv run task start-django
 ```
+
 http://localhost:8000/v1/api/hello-world/
 http://localhost:8000/admin/
 
@@ -29,8 +30,8 @@ $ mkdir backend
 $ docker compose exec web uv run django-admin startproject config backend/api/
 
 # app 追加
-$ mkdir backend/fsm_model
-$ docker compose exec web uv run django-admin startapp fsm_model fsm_model
+$ mkdir backend/data_optimization
+$ docker compose exec web uv run django-admin startapp data_optimization data_optimization
 
 $ docker compose exec web uv run task start-django
 - 以下を実行
@@ -70,6 +71,8 @@ $ docker compose exec web uv run mypy .
 ### ダミーデータ作成
 ```sh
 $ docker compose exec web uv run python manage.py make_dummy_blog_author
+$ docker compose exec web uv run python manage.py make_transaction_dummy_model
+$ docker compose exec web uv run python manage.py make_dummy_blog_generic_foreign_key_model
 ```
 
 ```sh
@@ -86,9 +89,14 @@ $ docker compose exec web uv run python manage.py get_query_author2
 
 $ docker compose exec web uv run python manage.py get_invoice_count
 
-$ docker compose exec web uv run python manage.py make_transaction_dummy_model
+$ docker compose exec web uv run python manage.py get_explain
+$ docker compose exec web uv run python manage.py get_queryset
 
-$ docker compose exec web uv run python manage.py make_dummy_blog_generic_foreign_key_model
+# あまりクエリに違いがなかった
+$ docker compose exec web uv run python manage.py get_bad_query
+
+# N+1 問題
+$ docker compose exec web uv run python manage.py get_n_plus_1
 ```
 
 ### pyrefly を試す
@@ -104,3 +112,9 @@ $ docker compose exec web uv run pyrefly check --remove-unused-ignores
 - [django-fsm-2](https://github.com/django-commons/django-fsm-2)
 - [django-fsm-2-admin](https://github.com/coral-li/django-fsm-2-admin)
 - [django-fsm を使って Django の状態遷移を管理する](https://joseph-fox.co.uk/tech/manage-state-transitions-django-fsm-guide)
+
+### インデックスの使用
+- デフォルトの id フィールドはインデックス作成済み
+- 主キー、ForeignKey、OneToOneField はデフォルトでインデックス作成済み
+- インデックスを作成すると、データの取得が高速化されるが、テーブルの書き込み速度が低下する
+- クラスター化インデックスは、データアクセスパターンを分析した後に使用すべき
