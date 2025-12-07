@@ -5,15 +5,24 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('fsm_model', '0001_initial'),
+        ("fsm_model", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='monitorpost',
-            name='state',
-            field=django_fsm.FSMField(choices=[('applying', '応募中'), ('won', '当選'), ('lost', '落選'), ('not_selected', '不採用'), ('withdrawn', '辞退')], default='applying', max_length=50),
+            model_name="monitorpost",
+            name="state",
+            field=django_fsm.FSMField(
+                choices=[
+                    ("applying", "応募中"),
+                    ("won", "当選"),
+                    ("lost", "落選"),
+                    ("not_selected", "不採用"),
+                    ("withdrawn", "辞退"),
+                ],
+                default="applying",
+                max_length=50,
+            ),
         ),
     ]
