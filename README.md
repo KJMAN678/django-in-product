@@ -30,8 +30,8 @@ $ mkdir backend
 $ docker compose exec web uv run django-admin startproject config backend/api/
 
 # app 追加
-$ mkdir backend/bulk_create_trouble
-$ docker compose exec web uv run django-admin startapp bulk_create_trouble bulk_create_trouble
+$ mkdir backend/or_create
+$ docker compose exec web uv run django-admin startapp or_create or_create
 
 $ docker compose exec web uv run task start-django
 - 以下を実行
@@ -104,6 +104,8 @@ $ docker compose exec web uv run python manage.py do_bulk_create_no_signal
 $ docker compose exec web uv run python manage.py do_bulk_create_no_multi_table_inheritance
 
 $ docker compose exec web uv run python manage.py do_bulk_create_many_to_many_model
+
+$ docker compose exec web uv run python manage.py get_update_or_create
 ```
 
 ### pyrefly を試す
@@ -125,3 +127,9 @@ $ docker compose exec web uv run pyrefly check --remove-unused-ignores
 - 主キー、ForeignKey、OneToOneField はデフォルトでインデックス作成済み
 - インデックスを作成すると、データの取得が高速化されるが、テーブルの書き込み速度が低下する
 - クラスター化インデックスは、データアクセスパターンを分析した後に使用すべき
+
+### Database 設定
+
+- [持続的 (persistent) な接続](https://docs.djangoproject.com/ja/5.2/ref/databases/#persistent-connections)
+  - `CONN_MAX_AGE` を設定することで、接続を保持する時間を設定できる
+    - デフォルトは 0 で、接続を保持しない

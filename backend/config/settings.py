@@ -49,6 +49,7 @@ CUSTOM_APPS = [
     "organized_model",
     "data_optimization",
     "bulk_create_trouble",
+    "or_create",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + CUSTOM_APPS
