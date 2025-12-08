@@ -20,6 +20,11 @@ http://localhost:8000/v1/api/hello-world/
 http://localhost:8000/admin/
 
 
+- 同期処理
+http://localhost:8000/async/get-blog/
+- 非同期処理
+http://localhost:8000/async/get-blog-async/
+
 ### 保留 backend
 ```sh
 $ docker compose exec web uv add Django==5.2.8
@@ -30,8 +35,8 @@ $ mkdir backend
 $ docker compose exec web uv run django-admin startproject config backend/api/
 
 # app 追加
-$ mkdir backend/or_create
-$ docker compose exec web uv run django-admin startapp or_create or_create
+$ mkdir backend/async
+$ docker compose exec web uv run django-admin startapp async async
 
 $ docker compose exec web uv run task start-django
 - 以下を実行
