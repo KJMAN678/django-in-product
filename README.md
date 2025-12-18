@@ -46,7 +46,7 @@ $ docker compose exec web uv run task start-django
 $ docker compose exec web uv run python manage.py makemigrations
 $ docker compose exec web uv run python manage.py flush --no-input
 $ docker compose exec web uv run python manage.py migrate
-$ docker compose exec web uv run manage.py createsuperuser --noinput
+$ docker compose exec web uv run python manage.py createsuperuser --noinput
 ```
 
 ### 逆 migration
