@@ -68,9 +68,6 @@ $ docker compose exec web uv run ruff check . --fix
 $ docker compose exec web uv run ruff format .
 $ docker compose exec web uv run pyrefly check 
 $ docker compose exec web uv run pytest
-
-# mypy は pyrefly に移行中
-$ docker compose exec web uv run mypy .
 ```
 
 ### ダミーデータ作成
