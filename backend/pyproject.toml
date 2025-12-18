@@ -5,7 +5,7 @@ description = "Django in Product"
 readme = "README.md"
 requires-python = ">=3.13,<3.14"
 dependencies = [
-    "django==5.2.9",
+    "django==6.0",
     "djangorestframework==3.16.1",
     "psycopg2==2.9.11",
     "pillow==12.0.0",
@@ -15,7 +15,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "django-stubs==5.2.7",
+    "django-stubs==5.2.8",
     "djangorestframework-stubs==3.16.5",
     "pytest==9.0.1",
     "pytest-django==4.11.1",
@@ -23,6 +23,7 @@ dev = [
     "taskipy==1.14.1",
     "pyrefly==0.44.1",
     "Faker==38.2.0",
+    "djlint==1.36.4",
 ]
 
 [tool.pytest.ini_options]
@@ -59,6 +60,7 @@ ruff check . --fix && \
 ruff format . && \
 pyrefly check  --suppress-errors && \
 pyrefly check --remove-unused-ignores && \
+djlint templates --extension html --reformat && \
 pytest
 """
 

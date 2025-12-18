@@ -25,6 +25,9 @@ http://localhost:8000/async/get-blog/
 - 非同期処理
 http://localhost:8000/async/get-blog-async/
 
+- 非同期処理でトランザクションを使用する
+http://localhost:8000/async/async-view-with-transaction/
+
 ### 保留 backend
 ```sh
 $ docker compose exec web uv add Django==5.2.8
@@ -68,6 +71,7 @@ $ docker compose exec web uv run ruff check . --fix
 $ docker compose exec web uv run ruff format .
 $ docker compose exec web uv run pyrefly check 
 $ docker compose exec web uv run pytest
+$ docker compose exec web uv run djlint templates --extension html --reformat
 ```
 
 ### ダミーデータ作成

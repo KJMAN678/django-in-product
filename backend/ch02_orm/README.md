@@ -61,3 +61,6 @@ $ docker compose exec web uv run python manage.py get_update_or_create
 - メモ
   - Django 非同期処理が活きるパターンとは
   - Django 非同期処理 でなんとかトランザクションするには
+    -> [Djnago 6.0 でも非対応](https://docs.djangoproject.com/ja/6.0/topics/async/#:~:text=%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AF%E9%9D%9E%E5%90%8C%E6%9C%9F%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E3%81%AF%E3%81%BE%E3%81%A0%E6%A9%9F%E8%83%BD%E3%81%97%E3%81%BE%E3%81%9B%E3%82%93%E3%80%82%E3%82%82%E3%81%97%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%8B%95%E4%BD%9C%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%89%E3%81%8C%E3%81%82%E3%82%8B%E5%A0%B4%E5%90%88%E3%81%AF%E3%80%81%E3%81%9D%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E3%82%921%E3%81%A4%E3%81%AE%E5%90%8C%E6%9C%9F%E7%9A%84%E3%81%AA%E9%96%A2%E6%95%B0%E3%81%A8%E3%81%97%E3%81%A6%E6%9B%B8%E3%81%84%E3%81%A6%E3%80%81sync_to_async()%20%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%99%E3%81%93%E3%81%A8%E3%82%92%E3%81%8A%E3%81%99%E3%81%99%E3%82%81%E3%81%97%E3%81%BE%E3%81%99%E3%80%82)
+    - コードを1つの同期的な関数として書いて、sync_to_async() を使用して呼び出す必要あり
+    - [select_for_update](https://docs.djangoproject.com/ja/6.0/ref/models/querysets/#select-for-update)は、トランザクションが終了するまで行をロックし、サポートされているデータベース上で SELECT ... FOR UPDATE SQL 文を生成する QuerySet を返す
