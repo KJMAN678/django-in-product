@@ -9,5 +9,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /app/backend
 COPY . .
-RUN uv sync --dev --link-mode=copy
+RUN uv sync --dev
 CMD ["uv", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]

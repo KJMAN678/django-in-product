@@ -30,10 +30,26 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     "rest_framework",
+    "django_fsm",
+    "fsm_admin",
 ]
 
 CUSTOM_APPS = [
-    "api",
+    "ch01_drf.api",
+    "ch02_orm.author",
+    "ch02_orm.blog",
+    "ch02_orm.util",
+    "ch02_orm.a_model",
+    "ch02_orm.b_model",
+    "ch02_orm.model_manager",
+    "ch02_orm.uuid_model",
+    "ch02_orm.transaction_model",
+    "ch02_orm.generic_foreign_key_model",
+    "ch02_orm.fsm_model",
+    "ch02_orm.organized_model",
+    "ch02_orm.data_optimization",
+    "ch02_orm.bulk_create_trouble",
+    "ch02_orm.or_create",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + CUSTOM_APPS
@@ -53,7 +69,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

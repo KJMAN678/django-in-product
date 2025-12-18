@@ -5,19 +5,25 @@ description = "Django in Product"
 readme = "README.md"
 requires-python = ">=3.13,<3.14"
 dependencies = [
-    "django==5.2.8",
+    "django==6.0",
     "djangorestframework==3.16.1",
     "psycopg2==2.9.11",
+    "pillow==12.0.0",
+    "django-fsm-2==4.1.0",
+    "django-fsm-2-admin==2.0.1",
 ]
 
 [dependency-groups]
 dev = [
-    "django-stubs==5.2.7",
+    "django-stubs==5.2.8",
     "djangorestframework-stubs==3.16.5",
-    "mypy==1.18.2",
     "pytest==9.0.1",
     "pytest-django==4.11.1",
     "ruff==0.14.6",
+    "taskipy==1.14.1",
+    "pyrefly==0.44.1",
+    "Faker==38.2.0",
+    "djlint==1.36.4",
 ]
 
 [tool.pytest.ini_options]
@@ -31,4 +37,44 @@ ignore = [
 
 select = [
    "I",
+]
+
+[tool.mypy]
+plugins = ["mypy_django_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "config.settings"
+
+[tool.uv]
+link-mode = "copy"
+
+[tool.taskipy.tasks]
+restart-docker = """
+docker compose down && \
+docker compose build && \
+docker compose up -d
+"""
+
+check = """
+ruff check . --fix && \
+ruff format . && \
+pyrefly check  --suppress-errors && \
+pyrefly check --remove-unused-ignores && \
+djlint templates --extension html --reformat && \
+pytest
+"""
+
+start-django = """
+python manage.py makemigrations && \
+python manage.py flush --no-input && \
+python manage.py migrate && \
+python manage.py createsuperuser --noinput && \
+python manage.py make_dummy_blog_author && \
+python manage.py make_dummy_invoice && \
+python manage.py make_dummy_uuid_model
+"""
+
+[tool.pyrefly]
+search_path = [
+    "."
 ]
