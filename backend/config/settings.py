@@ -50,6 +50,7 @@ CUSTOM_APPS = [
     "ch02_orm.data_optimization",
     "ch02_orm.bulk_create_trouble",
     "ch02_orm.or_create",
+    "ch03_drf_serialize.model_serializer",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + CUSTOM_APPS

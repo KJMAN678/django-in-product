@@ -38,8 +38,8 @@ $ mkdir backend
 $ docker compose exec web uv run django-admin startproject config backend/api/
 
 # app 追加
-$ mkdir backend/ch0x_xxx/async
-$ docker compose exec web uv run django-admin startapp async ch0x_xxx/async
+$ mkdir backend/ch03_drf_serialize/model_serializer
+$ docker compose exec web uv run django-admin startapp ch03_drf_serialize.model_serializer ch03_drf_serialize/model_serializer
 
 $ docker compose exec web uv run task start-django
 - 以下を実行
