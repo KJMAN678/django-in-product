@@ -90,3 +90,7 @@ $ docker compose exec web uv run pyrefly check --suppress-errors
 $ docker compose exec web uv run pyrefly check --remove-unused-ignores
 ```
 
+### Django Shell を実行
+```sh
+$ docker compose exec web uv run python manage.py shell
+```
